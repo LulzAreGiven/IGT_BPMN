@@ -5,7 +5,6 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
 
@@ -13,21 +12,41 @@ namespace IGT.Model
 {
     public class Parser : IParse
     {
-        private readonly string _path = Path.Combine(Environment.CurrentDirectory, @"..\..\Data\Signavio_A1.bpmn");
+        private readonly string _pathBpmn = Path.Combine(Environment.CurrentDirectory, @"..\..\Data\Signavio_A1.bpmn");
 
-        public Definitions ParseBpmnFile()
+        private readonly string[] _wsdlFileStrings =
+            Directory.GetFiles(Path.Combine(Environment.CurrentDirectory, @"..\..\Data\"), "*.wsdl");
+
+        public BPMN.Definitions ParseBpmnFile()
         {
-            var serializer = new XmlSerializer(typeof(Definitions));
-            using (var fileStream = new FileStream(_path, FileMode.Open))
+            var serializer = new XmlSerializer(typeof(BPMN.Definitions));
+            using (var fileStream = new FileStream(_pathBpmn, FileMode.Open))
             {
-                var result = (Definitions)serializer.Deserialize(fileStream);
+                var result = (BPMN.Definitions)serializer.Deserialize(fileStream);
                 return result;
             }
         }
 
-        public List<Task> GetTasks()
+        public List<BPMN.Task> GetTasks()
         {
-            return new List<Task>();
+            var definition = ParseBpmnFile();
+            var tasks = definition.Process.Task;
+            return tasks;
+        }
+
+        public List<WSDL.Definitions> ParseWsdlFiles()
+        {
+            var tmpList = new List<WSDL.Definitions>();
+            foreach (var wsdlFileString in _wsdlFileStrings)
+            {
+                var serializer = new XmlSerializer(typeof(WSDL.Definitions));
+                using (var fileStream = new FileStream(wsdlFileString, FileMode.Open))
+                {
+                    var result = (WSDL.Definitions)serializer.Deserialize(fileStream);
+                    tmpList.Add(result);
+                }
+            }
+            return tmpList;
         }
     }
 }

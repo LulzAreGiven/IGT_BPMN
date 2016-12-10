@@ -1,15 +1,17 @@
-﻿using System;
+﻿using IGT.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace IGT.Model
 {
     public interface IParse
     {
-        Definitions ParseBpmnFile();
+        BPMN.Definitions ParseBpmnFile();
 
-        List<Task> GetTasks();
+        List<BPMN.Task> GetTasks();
+
+        List<WSDL.Definitions> ParseWsdlFiles();
     }
 }

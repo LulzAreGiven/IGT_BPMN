@@ -77,7 +77,7 @@
     </ApplicationDefinition>
     <Compile Include="Model\IParse.cs" />
     <Compile Include="Model\Parser.cs" />
-    <Compile Include="Model\SignavioBPMN.cs" />
+    <Compile Include="Model\SignavioBPMNModel.cs" />
     <Compile Include="Model\WSDLModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />

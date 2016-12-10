@@ -13,7 +13,7 @@ namespace IGT.Model
  http://www.apache.org/licenses/LICENSE-2.0
  */
 
-    namespace Xml2CSharp
+    namespace WSDL
     {
         [XmlRoot(ElementName = "part", Namespace = "http://schemas.xmlsoap.org/wsdl/")]
         public class Part
