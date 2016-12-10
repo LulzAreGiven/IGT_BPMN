@@ -116,22 +116,54 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="Data\BestellungInhaltService.wsdl" />
-    <None Include="Data\BestellungUmsatzMittelwertService.wsdl" />
-    <None Include="Data\BestellungUmsatzService.wsdl" />
-    <None Include="Data\BestellungZustandService.wsdl" />
-    <None Include="Data\KundenAdresseService.wsdl" />
-    <None Include="Data\KundenAlterService.wsdl" />
-    <None Include="Data\KundenBestellungenService.wsdl" />
-    <None Include="Data\KundenGeschlechtService.wsdl" />
-    <None Include="Data\KundenRabattService.wsdl" />
-    <None Include="Data\KundenUmsatzMittelwertService.wsdl" />
-    <None Include="Data\KundenVorNachnameService.wsdl" />
-    <None Include="Data\PeerGroupAdressenService.wsdl" />
-    <None Include="Data\PeerGroupBestellungenService.wsdl" />
-    <None Include="Data\PeerGroupUmsatzDurchschnittService.wsdl" />
-    <None Include="Data\PeerGroupUmsatzService.wsdl" />
-    <None Include="Data\Signavio_A1.bpmn" />
+    <None Include="Data\BestellungInhaltService.wsdl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\BestellungUmsatzMittelwertService.wsdl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\BestellungUmsatzService.wsdl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\BestellungZustandService.wsdl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\KundenAdresseService.wsdl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\KundenAlterService.wsdl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\KundenBestellungenService.wsdl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\KundenGeschlechtService.wsdl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\KundenRabattService.wsdl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\KundenUmsatzMittelwertService.wsdl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\KundenVorNachnameService.wsdl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\PeerGroupAdressenService.wsdl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\PeerGroupBestellungenService.wsdl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\PeerGroupUmsatzDurchschnittService.wsdl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\PeerGroupUmsatzService.wsdl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\Signavio_A1.bpmn">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
