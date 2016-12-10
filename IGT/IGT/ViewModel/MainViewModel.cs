@@ -1,5 +1,4 @@
 ﻿using GalaSoft.MvvmLight;
-using IGT.Model;
 
 namespace IGT.ViewModel
 {
@@ -14,7 +13,7 @@ namespace IGT.ViewModel
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>
-        public MainViewModel(IDataService dataService)
+        public MainViewModel()
         {
         }
     }
