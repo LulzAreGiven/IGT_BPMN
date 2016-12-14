@@ -26,6 +26,7 @@
         </Grid.ColumnDefinitions>
 
         <DockPanel Grid.Column="0" Grid.ColumnSpan="2">
+            <Button  DockPanel.Dock="Top" Content="Open BPMN-File" Command="{Binding OpenFileDialogCommand}"/>
             <ComboBox Background="Transparent"
                       DockPanel.Dock="Top"
                       ItemsSource="{Binding Tasks}">

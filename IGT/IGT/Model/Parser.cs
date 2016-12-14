@@ -17,19 +17,19 @@ namespace IGT.Model
         private readonly string[] _wsdlFileStrings =
             Directory.GetFiles(Path.Combine(Environment.CurrentDirectory, @"..\..\Data\"), "*.wsdl");
 
-        public BPMN.Definitions ParseBpmnFile()
+        public BPMN.Definitions ParseBpmnFile(string path)
         {
             var serializer = new XmlSerializer(typeof(BPMN.Definitions));
-            using (var fileStream = new FileStream(_pathBpmn, FileMode.Open))
+            using (var fileStream = new FileStream(path, FileMode.Open))
             {
                 var result = (BPMN.Definitions)serializer.Deserialize(fileStream);
                 return result;
             }
         }
 
-        public List<BPMN.Task> GetTasks()
+        public List<BPMN.Task> GetTasks(string path)
         {
-            var definition = ParseBpmnFile();
+            var definition = ParseBpmnFile(path);
             var tasks = definition.Process.Task;
             return tasks;
         }

@@ -8,9 +8,9 @@ namespace IGT.Model
 {
     public interface IParse
     {
-        BPMN.Definitions ParseBpmnFile();
+        BPMN.Definitions ParseBpmnFile( string path);
 
-        List<BPMN.Task> GetTasks();
+        List<BPMN.Task> GetTasks(string path);
 
         List<WSDL.Definitions> ParseWsdlFiles();
     }

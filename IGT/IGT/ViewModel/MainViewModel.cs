@@ -2,6 +2,8 @@
 using IGT.Model;
 using IGT.Model.BPMN;
 using System.Collections.Generic;
+using GalaSoft.MvvmLight.Command;
+using Microsoft.Win32;
 
 namespace IGT.ViewModel
 {
@@ -13,6 +15,7 @@ namespace IGT.ViewModel
     /// </summary>
     public class MainViewModel : ViewModelBase
     {
+        private IParse Parser { get; set; }
         private List<Task> _tasks = new List<Task>();
 
         public List<Task> Tasks
@@ -23,6 +26,7 @@ namespace IGT.ViewModel
                 if (value != null)
                 {
                     _tasks = value;
+                    RaisePropertyChanged();
                 }
             }
         }
@@ -33,13 +37,27 @@ namespace IGT.ViewModel
 
         public double FMeasure { get; set; } = 23;
 
+        public RelayCommand OpenFileDialogCommand { get; private set; }
+
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>
         public MainViewModel(IParse parser)
         {
-            Tasks = parser.GetTasks();
-            parser.ParseWsdlFiles();
+            Parser = parser;
+            OpenFileDialogCommand = new RelayCommand(OpenDialog);
+            Parser.ParseWsdlFiles();
+        }
+
+        private void OpenDialog()
+        {
+            var dialog = new OpenFileDialog {Filter = "BPMN Files| *.bpmn"};
+            if (dialog.ShowDialog() == true)
+            {
+                var test = dialog.FileName;
+                Tasks = Parser.GetTasks(test);
+            }
+
         }
     }
 }
