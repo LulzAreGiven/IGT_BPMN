@@ -1,52 +1,52 @@
 ﻿<?xml version="1.0"?>
-<definitions name="KundenUmsatzService"
-   targetNamespace="http://www.examples.com/wsdl/GetKundenUmsatz.wsdl"
+<definitions name="KundenAlterService"
+   targetNamespace="http://www.examples.com/wsdl/GetKundenAlter.wsdl"
    xmlns="http://schemas.xmlsoap.org/wsdl/"
    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
    xmlns:tns="http://www.examples.com/wsdl/HelloService.wsdl"
    xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 
-  <message name="GetKundenUmsatzRequest">
+  <message name="GetKundenAlterRequest">
     <part name="customerId" type="xsd:integer" />
   </message>
 
-  <message name="GetKundenUmsatzResponse">
+  <message name="GetKundenAlterResponse">
     <part name="getsDiscount" type="xsd:boolean" />
   </message>
 
-  <portType name="KundenUmsatz_PortType">
+  <portType name="KundenAlter_PortType">
     <operation name="GetUmsatz">
-      <input message="tns:GetKundenUmsatzRequest" />
-      <output message="tns:GetKundenUmsatzResponse" />
+      <input message="tns:GetKundenAlterRequest" />
+      <output message="tns:GetKundenAlterResponse" />
     </operation>
   </portType>
 
-  <binding name="KundenUmsatz_Binding" type="tns:KundenUmsatz_PortType">
+  <binding name="KundenAlter_Binding" type="tns:KundenAlter_PortType">
     <soap:binding style="rpc"
        transport="http://schemas.xmlsoap.org/soap/http" />
-    <operation name="getKundenUmsatz">
-      <soap:operation soapAction="getKundenUmsatz" />
+    <operation name="getKundenAlter">
+      <soap:operation soapAction="getKundenAlter" />
       <input>
         <soap:body
            encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
-           namespace="urn:examples:kundenumsatzservice"
+           namespace="urn:examples:KundenAlterservice"
            use="encoded" />
       </input>
 
       <output>
         <soap:body
            encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
-           namespace="urn:examples:kundenumsatzservice"
+           namespace="urn:examples:KundenAlterservice"
            use="encoded" />
       </output>
     </operation>
   </binding>
 
-  <service name="KundenUmsatz_Service">
-    <documentation>WSDL File for KundenUmsatzService</documentation>
-    <port binding="tns:KundenUmsatz_Binding" name="KundenUmsatz_Port">
+  <service name="KundenAlter_Service">
+    <documentation>WSDL File for KundenAlterService</documentation>
+    <port binding="tns:KundenAlter_Binding" name="KundenAlter_Port">
       <soap:address
-         location="http://www.examples.com/GetKundenUmsatz/" />
+         location="http://www.examples.com/GetKundenAlter/" />
     </port>
   </service>
 </definitions>

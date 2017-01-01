@@ -1,9 +1,9 @@
 ﻿using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 using IGT.Model;
 using IGT.Model.BPMN;
-using System.Collections.Generic;
-using GalaSoft.MvvmLight.Command;
 using Microsoft.Win32;
+using System.Collections.Generic;
 
 namespace IGT.ViewModel
 {
@@ -51,13 +51,11 @@ namespace IGT.ViewModel
 
         private void OpenDialog()
         {
-            var dialog = new OpenFileDialog {Filter = "BPMN Files| *.bpmn"};
+            var dialog = new OpenFileDialog { Filter = "BPMN Files| *.bpmn" };
             if (dialog.ShowDialog() == true)
             {
-                var test = dialog.FileName;
-                Tasks = Parser.GetTasks(test);
+                Tasks = Parser.GetTasks(dialog.FileName);
             }
-
         }
     }
 }

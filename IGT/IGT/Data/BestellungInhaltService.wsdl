@@ -1,52 +1,52 @@
 ﻿<?xml version="1.0"?>
-<definitions name="KundenUmsatzService"
-   targetNamespace="http://www.examples.com/wsdl/GetKundenUmsatz.wsdl"
+<definitions name="BestellungInhaltService"
+   targetNamespace="http://www.examples.com/wsdl/GetBestellungInhalt.wsdl"
    xmlns="http://schemas.xmlsoap.org/wsdl/"
    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
    xmlns:tns="http://www.examples.com/wsdl/HelloService.wsdl"
    xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 
-  <message name="GetKundenUmsatzRequest">
+  <message name="GetBestellungInhaltRequest">
     <part name="customerId" type="xsd:integer" />
   </message>
 
-  <message name="GetKundenUmsatzResponse">
+  <message name="GetBestellungInhaltResponse">
     <part name="getsDiscount" type="xsd:boolean" />
   </message>
 
-  <portType name="KundenUmsatz_PortType">
+  <portType name="BestellungInhalt_PortType">
     <operation name="GetUmsatz">
-      <input message="tns:GetKundenUmsatzRequest" />
-      <output message="tns:GetKundenUmsatzResponse" />
+      <input message="tns:GetBestellungInhaltRequest" />
+      <output message="tns:GetBestellungInhaltResponse" />
     </operation>
   </portType>
 
-  <binding name="KundenUmsatz_Binding" type="tns:KundenUmsatz_PortType">
+  <binding name="BestellungInhalt_Binding" type="tns:BestellungInhalt_PortType">
     <soap:binding style="rpc"
        transport="http://schemas.xmlsoap.org/soap/http" />
-    <operation name="getKundenUmsatz">
-      <soap:operation soapAction="getKundenUmsatz" />
+    <operation name="getBestellungInhalt">
+      <soap:operation soapAction="getBestellungInhalt" />
       <input>
         <soap:body
            encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
-           namespace="urn:examples:kundenumsatzservice"
+           namespace="urn:examples:BestellungInhaltService"
            use="encoded" />
       </input>
 
       <output>
         <soap:body
            encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
-           namespace="urn:examples:kundenumsatzservice"
+           namespace="urn:examples:BestellungInhaltService"
            use="encoded" />
       </output>
     </operation>
   </binding>
 
-  <service name="KundenUmsatz_Service">
-    <documentation>WSDL File for KundenUmsatzService</documentation>
-    <port binding="tns:KundenUmsatz_Binding" name="KundenUmsatz_Port">
+  <service name="BestellungInhalt_Service">
+    <documentation>WSDL File for BestellungInhaltService</documentation>
+    <port binding="tns:BestellungInhalt_Binding" name="BestellungInhalt_Port">
       <soap:address
-         location="http://www.examples.com/GetKundenUmsatz/" />
+         location="http://www.examples.com/GetBestellungInhalt/" />
     </port>
   </service>
 </definitions>

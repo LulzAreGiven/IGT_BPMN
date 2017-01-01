@@ -1,52 +1,52 @@
 ﻿<?xml version="1.0"?>
-<definitions name="KundenUmsatzService"
-   targetNamespace="http://www.examples.com/wsdl/GetKundenUmsatz.wsdl"
+<definitions name="PeergroupUmsatzService"
+   targetNamespace="http://www.examples.com/wsdl/GetPeergroupUmsatz.wsdl"
    xmlns="http://schemas.xmlsoap.org/wsdl/"
    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
    xmlns:tns="http://www.examples.com/wsdl/HelloService.wsdl"
    xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 
-  <message name="GetKundenUmsatzRequest">
+  <message name="GetPeergroupUmsatzRequest">
     <part name="customerId" type="xsd:integer" />
   </message>
 
-  <message name="GetKundenUmsatzResponse">
+  <message name="GetPeergroupUmsatzResponse">
     <part name="getsDiscount" type="xsd:boolean" />
   </message>
 
-  <portType name="KundenUmsatz_PortType">
+  <portType name="PeergroupUmsatz_PortType">
     <operation name="GetUmsatz">
-      <input message="tns:GetKundenUmsatzRequest" />
-      <output message="tns:GetKundenUmsatzResponse" />
+      <input message="tns:GetPeergroupUmsatzRequest" />
+      <output message="tns:GetPeergroupUmsatzResponse" />
     </operation>
   </portType>
 
-  <binding name="KundenUmsatz_Binding" type="tns:KundenUmsatz_PortType">
+  <binding name="PeergroupUmsatz_Binding" type="tns:PeergroupUmsatz_PortType">
     <soap:binding style="rpc"
        transport="http://schemas.xmlsoap.org/soap/http" />
-    <operation name="getKundenUmsatz">
-      <soap:operation soapAction="getKundenUmsatz" />
+    <operation name="getPeergroupUmsatz">
+      <soap:operation soapAction="getPeergroupUmsatz" />
       <input>
         <soap:body
            encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
-           namespace="urn:examples:kundenumsatzservice"
+           namespace="urn:examples:PeergroupUmsatzservice"
            use="encoded" />
       </input>
 
       <output>
         <soap:body
            encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
-           namespace="urn:examples:kundenumsatzservice"
+           namespace="urn:examples:PeergroupUmsatzservice"
            use="encoded" />
       </output>
     </operation>
   </binding>
 
-  <service name="KundenUmsatz_Service">
-    <documentation>WSDL File for KundenUmsatzService</documentation>
-    <port binding="tns:KundenUmsatz_Binding" name="KundenUmsatz_Port">
+  <service name="PeergroupUmsatz_Service">
+    <documentation>WSDL File for PeergroupUmsatzService</documentation>
+    <port binding="tns:PeergroupUmsatz_Binding" name="PeergroupUmsatz_Port">
       <soap:address
-         location="http://www.examples.com/GetKundenUmsatz/" />
+         location="http://www.examples.com/GetPeergroupUmsatz/" />
     </port>
   </service>
 </definitions>
