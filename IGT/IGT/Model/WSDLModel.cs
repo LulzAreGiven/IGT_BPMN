@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GalaSoft.MvvmLight;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -148,7 +149,7 @@ namespace IGT.Model
         }
 
         [XmlRoot(ElementName = "service", Namespace = "http://schemas.xmlsoap.org/wsdl/")]
-        public class Service
+        public class Service : ObservableObject
         {
             [XmlElement(ElementName = "documentation", Namespace = "http://schemas.xmlsoap.org/wsdl/")]
             public string Documentation { get; set; }

@@ -2,8 +2,10 @@
 using GalaSoft.MvvmLight.Command;
 using IGT.Model;
 using IGT.Model.BPMN;
+using IGT.Model.WSDL;
 using Microsoft.Win32;
 using System.Collections.Generic;
+using Definitions = IGT.Model.WSDL.Definitions;
 
 namespace IGT.ViewModel
 {
@@ -21,14 +23,15 @@ namespace IGT.ViewModel
         public List<Task> Tasks
         {
             get { return _tasks; }
-            set
-            {
-                if (value != null)
-                {
-                    _tasks = value;
-                    RaisePropertyChanged();
-                }
-            }
+            set { Set(ref _tasks, value); }
+        }
+
+        private List<Definitions> _services = new List<Definitions>();
+
+        public List<Definitions> Services
+        {
+            get { return _services; }
+            set { Set(ref _services, value); }
         }
 
         public double Precision { get; set; } = 30;
@@ -38,6 +41,7 @@ namespace IGT.ViewModel
         public double FMeasure { get; set; } = 23;
 
         public RelayCommand OpenFileDialogCommand { get; private set; }
+        public RelayCommand ComputePrecisionAndRecallOnSelectionChangedCommand { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
@@ -46,7 +50,12 @@ namespace IGT.ViewModel
         {
             Parser = parser;
             OpenFileDialogCommand = new RelayCommand(OpenDialog);
-            Parser.ParseWsdlFiles();
+            ComputePrecisionAndRecallOnSelectionChangedCommand = new RelayCommand(GetPrecisionAndRecall);
+            Services = Parser.ParseWsdlFiles();
+        }
+
+        private void GetPrecisionAndRecall()
+        {
         }
 
         private void OpenDialog()

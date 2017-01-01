@@ -25,30 +25,51 @@
             <ColumnDefinition Width="2*" />
         </Grid.ColumnDefinitions>
 
-        <DockPanel Grid.Column="0" Grid.ColumnSpan="2">
-            <Button  DockPanel.Dock="Top" Content="Open BPMN-File" Command="{Binding OpenFileDialogCommand}"/>
-            <ComboBox Background="Transparent"
-                      DockPanel.Dock="Top"
-                      ItemsSource="{Binding Tasks}">
-                <ComboBox.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock Text="{Binding Name}" TextTrimming="CharacterEllipsis" />
-                    </DataTemplate>
-                </ComboBox.ItemTemplate>
-            </ComboBox>
-            <DockPanel Margin="0,20,0,0" DockPanel.Dock="Top">
+        <DockPanel Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   Margin="0,10,0,0">
+            <Button Width="100"
+                    Margin="5,0,0,0"
+                    HorizontalAlignment="Left"
+                    Command="{Binding OpenFileDialogCommand}"
+                    Content="Open BPMN-File"
+                    DockPanel.Dock="Top" />
+            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
+                <Label Content="Tasks: " />
+                <ComboBox Width="300"
+                          Margin="0,0,0,0"
+                          VerticalAlignment="Center"
+                          Background="Transparent"
+                          DockPanel.Dock="Top"
+                          ItemsSource="{Binding Tasks}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Name}" TextTrimming="CharacterEllipsis" />
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+            </StackPanel>
+
+            <StackPanel Margin="5,20,0,0"
+                        DockPanel.Dock="Top"
+                        Orientation="Horizontal">
+                <TextBlock>Vorgeschlagener Service:</TextBlock>
+                <TextBlock Margin="15,0,0,0">WIP</TextBlock>
+            </StackPanel>
+
+            <DockPanel Margin="10,5,0,0" DockPanel.Dock="Top">
                 <Label DockPanel.Dock="Left">Precision:</Label>
                 <TextBlock VerticalAlignment="Center"
                            DockPanel.Dock="Left"
                            Text="{Binding Precision}" />
             </DockPanel>
-            <DockPanel DockPanel.Dock="Top">
+            <DockPanel Margin="10,0,0,0" DockPanel.Dock="Top">
                 <Label DockPanel.Dock="Left">Recall:</Label>
                 <TextBlock VerticalAlignment="Center"
                            DockPanel.Dock="Left"
                            Text="{Binding Recall}" />
             </DockPanel>
-            <DockPanel DockPanel.Dock="Top">
+            <DockPanel Margin="10,0,0,0" DockPanel.Dock="Top">
                 <Label DockPanel.Dock="Left">F-measure:</Label>
                 <TextBlock Margin="0,5,0,0" Text="{Binding FMeasure}" />
             </DockPanel>

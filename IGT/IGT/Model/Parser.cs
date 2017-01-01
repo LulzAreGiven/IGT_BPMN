@@ -48,5 +48,20 @@ namespace IGT.Model
             }
             return tmpList;
         }
+
+        public double GetPrecision()
+        {
+            return 0.0;
+        }
+
+        public double GetRecall()
+        {
+            return 0.0;
+        }
+
+        public double GetFMeasure()
+        {
+            return 0.0;
+        }
     }
 }
