@@ -7,6 +7,7 @@ using System.Reflection;
 using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
+using IGT.Model.BPMN;
 
 namespace IGT.Model
 {
@@ -16,6 +17,10 @@ namespace IGT.Model
 
         private readonly string[] _wsdlFileStrings =
             Directory.GetFiles(Path.Combine(Environment.CurrentDirectory, @"..\..\Data\"), "*.wsdl");
+
+        public List<string> WsdlNameList { get; set; } = new List<string>();
+
+        private List<string> RelevantServices { get; } = new List<string>();
 
         public BPMN.Definitions ParseBpmnFile(string path)
         {
@@ -44,24 +49,57 @@ namespace IGT.Model
                 {
                     var result = (WSDL.Definitions)serializer.Deserialize(fileStream);
                     tmpList.Add(result);
+                    WsdlNameList.Add(result.Name.ToLower());
                 }
             }
             return tmpList;
         }
 
-        public double GetPrecision()
+        private double GetPrecision(Task task)
         {
-            return 0.0;
+            return (CountRelevantServices(task.Name.ToLower().Split(' ').ToList()) + _wsdlFileStrings.Length) /
+                            _wsdlFileStrings.Length;
         }
 
-        public double GetRecall()
+        private double GetRecall(Task task)
         {
-            return 0.0;
+            var relevantDocumentsCount = CountRelevantServices(task.Name.ToLower().Split(' ').ToList());
+            return (relevantDocumentsCount + _wsdlFileStrings.Length) / relevantDocumentsCount;
         }
 
-        public double GetFMeasure()
+        private double CountRelevantServices(List<string> chunkList)
         {
-            return 0.0;
+            RelevantServices.Clear();
+
+            foreach (var service in WsdlNameList)
+            {
+                foreach (var chunk in chunkList)
+                {
+                    if (service.Contains(chunk))
+                    {
+                        RelevantServices.Add(service);
+                    }
+                }
+            }
+            var count = RelevantServices.Count;
+            return count;
+        }
+
+        public List<double> GetPrecisionRecallFMeasure(Task task)
+        {
+            var precision = GetPrecision(task);
+            var recall = GetRecall(task);
+            var fMeasure = 2 * (precision * recall / (precision + recall));
+            return new List<double> { precision, recall, fMeasure };
+        }
+
+        public List<string> GetBestService()
+        {
+            var service = from s in RelevantServices
+                          group s by s into g
+                          orderby g.Count() descending
+                          select g.Key;
+            return service.ToList();
         }
     }
 }

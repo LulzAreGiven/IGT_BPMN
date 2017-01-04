@@ -34,14 +34,28 @@ namespace IGT.ViewModel
             set { Set(ref _services, value); }
         }
 
-        public double Precision { get; set; } = 30;
+        private Task _selectedTask;
 
-        public double Recall { get; set; } = 60;
+        public Task SelectedTask
+        {
+            get { return _selectedTask; }
+            set
+            {
+                Set(ref _selectedTask, value);
+                GetPrecisionAndRecall();
+            }
+        }
 
-        public double FMeasure { get; set; } = 23;
+        private double _precision;
+        public double Precision { get { return _precision; } set { Set(ref _precision, value); } }
+        private double _recall;
+        public double Recall { get { return _recall; } set { Set(ref _recall, value); } }
+        private double _fMeasure;
+        public double FMeasure { get { return _fMeasure; } set { Set(ref _fMeasure, value); } }
+        private List<string> _service;
+        public List<string> Service { get { return _service; } set { Set(ref _service, value); } }
 
         public RelayCommand OpenFileDialogCommand { get; private set; }
-        public RelayCommand ComputePrecisionAndRecallOnSelectionChangedCommand { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
@@ -50,12 +64,16 @@ namespace IGT.ViewModel
         {
             Parser = parser;
             OpenFileDialogCommand = new RelayCommand(OpenDialog);
-            ComputePrecisionAndRecallOnSelectionChangedCommand = new RelayCommand(GetPrecisionAndRecall);
             Services = Parser.ParseWsdlFiles();
         }
 
         private void GetPrecisionAndRecall()
         {
+            var tempList = Parser.GetPrecisionRecallFMeasure(SelectedTask);
+            Precision = tempList[0];
+            Recall = tempList[1];
+            FMeasure = tempList[2];
+            Service = Parser.GetBestService();
         }
 
         private void OpenDialog()

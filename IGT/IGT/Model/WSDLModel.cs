@@ -149,7 +149,7 @@ namespace IGT.Model
         }
 
         [XmlRoot(ElementName = "service", Namespace = "http://schemas.xmlsoap.org/wsdl/")]
-        public class Service : ObservableObject
+        public class Service
         {
             [XmlElement(ElementName = "documentation", Namespace = "http://schemas.xmlsoap.org/wsdl/")]
             public string Documentation { get; set; }
@@ -162,7 +162,7 @@ namespace IGT.Model
         }
 
         [XmlRoot(ElementName = "definitions", Namespace = "http://schemas.xmlsoap.org/wsdl/")]
-        public class Definitions
+        public class Definitions : ObservableObject
         {
             [XmlElement(ElementName = "message", Namespace = "http://schemas.xmlsoap.org/wsdl/")]
             public List<Message> Message { get; set; }
@@ -193,6 +193,10 @@ namespace IGT.Model
 
             [XmlAttribute(AttributeName = "xsd", Namespace = "http://www.w3.org/2000/xmlns/")]
             public string Xsd { get; set; }
+
+            public double Precision { get; set; }
+            public double Recall { get; set; }
+            public double FMeasure { get; set; }
         }
     }
 }
