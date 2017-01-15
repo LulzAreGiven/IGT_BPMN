@@ -64,7 +64,7 @@ namespace IGT.Model
         private double GetRecall(Task task)
         {
             var relevantDocumentsCount = CountRelevantServices(task.Name.ToLower().Split(' ').ToList());
-            return (relevantDocumentsCount ) / relevantDocumentsCount; //immer 1??
+            return (relevantDocumentsCount)/relevantDocumentsCount; //gehen davon aus, dass wir immer alle relevanten Services gefunden haben -> 1
         }
 
         private double CountRelevantServices(List<string> chunkList)
