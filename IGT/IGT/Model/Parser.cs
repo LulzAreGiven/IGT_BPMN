@@ -57,14 +57,14 @@ namespace IGT.Model
 
         private double GetPrecision(Task task)
         {
-            return (CountRelevantServices(task.Name.ToLower().Split(' ').ToList()) + _wsdlFileStrings.Length) /
+            return (CountRelevantServices(task.Name.ToLower().Split(' ').ToList())) /
                             _wsdlFileStrings.Length;
         }
 
         private double GetRecall(Task task)
         {
             var relevantDocumentsCount = CountRelevantServices(task.Name.ToLower().Split(' ').ToList());
-            return (relevantDocumentsCount + _wsdlFileStrings.Length) / relevantDocumentsCount;
+            return (relevantDocumentsCount ) / relevantDocumentsCount; //immer 1??
         }
 
         private double CountRelevantServices(List<string> chunkList)
